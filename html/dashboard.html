@@ -1,0 +1,67 @@
+<!-- The text included between a '< ! --' and a '-- >' (here with extra spaces) consitutes a comment that does not interfere with the page --> 
+
+<!-- We build a 2x2 table where each entry is an OWID plot; you can add as many rows and as many columns as you want; just keep adding the tags for new rows and for new cells -->
+
+<table style="width: 100%; height: 100%">
+
+	<!-- <tr> indicates the beginning of a new row -->
+
+	<tr>
+
+		<!-- <th> indicates the start of a new cell in this row -->
+
+		<th>
+
+			<!--
+				Insert below the code that you copy from the OWID explorer
+				This is just one specific example
+			-->
+
+			<!-- iframe code copied from OWID -->
+
+			<iframe src="https://ourworldindata.org/explorers/coronavirus-data-explorer?facet=none&Metric=Confirmed+cases&Interval=7-day+rolling+average&Relative+to+Population=true&Color+by+test+positivity=false&country=USA~ITA~CAN~GBR&hideControls=true" loading="lazy" style="width: 100%; height: 100%; border: 0px none;"></iframe>
+
+		<!-- </th> indicates the end of the cell-->
+
+		</th>
+
+		<!-- one more cell -->
+
+	    <th>
+
+	    	<!-- iframe code copied from OWID -->
+
+	    	<iframe src="https://ourworldindata.org/explorers/coronavirus-data-explorer?facet=none&Metric=Confirmed+deaths&Interval=7-day+rolling+average&Relative+to+Population=true&Color+by+test+positivity=false&country=USA~ITA~CAN~GBR&hideControls=true" loading="lazy" style="width: 100%; height: 100%; border: 0px none;"></iframe>
+    
+	    <!-- </th> indicates the end of the cell-->
+
+    	</th>
+
+    <!-- </tr> indicates the end of the row-->
+
+	</tr>
+
+	<tr>
+    
+    	
+    	<td>
+
+    		<iframe src="https://ourworldindata.org/explorers/coronavirus-data-explorer?facet=none&Metric=Share+of+positive+tests&Interval=Cumulative&Relative+to+Population=true&Color+by+test+positivity=false&country=USA~ITA~CAN~GBR&hideControls=true" loading="lazy" style="width: 100%; height: 100%; border: 0px none;"></iframe>
+
+    	</td>
+
+
+    	<td>
+
+	    	<iframe src="https://ourworldindata.org/explorers/coronavirus-data-explorer?facet=none&Metric=Confirmed+deaths&Interval=Cumulative&Relative+to+Population=true&Color+by+test+positivity=false&country=USA~ITA~CAN~GBR&hideControls=true" loading="lazy" style="width: 100%; height: 100%; border: 0px none;"></iframe>
+
+    	</td>
+
+
+
+  	</tr>
+
+
+<!-- end of the table>
+</table>
+
