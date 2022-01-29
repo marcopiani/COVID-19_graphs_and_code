@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+<body>
+
+	<div>
+	  <input type="range" id="a" name="a" value="" step = 0.1
+	         min="" max="" OnInput="updateTextInput(this.value,'a_value')">
+
+	  <label for="a">a</label>
+
+	<input type="number" id="a_value" value="" min="" max="" step = 0.1
+		OnInput="updateSlider(this.value,'a')">
+
+	</div>
+	<div>
+	  <input type="range" id="b" name="b" value="" step = 0.1
+	         min="" max="" OnInput="updateTextInput(this.value,'b_value')">
+
+	  <label for="b">b</label>
+
+	<input type="number" id="b_value" value="" min="" max="" step = 0.1
+		OnInput="updateSlider(this.value,'b')">
+
+	</div>
+	<div>
+	  <input type="range" id="c" name="c" value="" step = 0.1
+	         min="" max="" OnInput="updateTextInput(this.value,'c_value')">
+
+	  <label for="c">c</label>
+
+	<input type="number" id="c_value" value="" min="" max="" step = 0.1
+		OnInput="updateSlider(this.value,'c')">
+
+	</div>
+
+	<div id="myPlot" style="width:100%;max-width:800px"></div>
+
+
+	<script>
+
+		var xArray = [...Array(1000).keys()].map(i => i/4 -125);
+		var yArray = [...Array(1000).keys()].map(i => i/4 -125);
+
+		// Define Layout
+		var layout = {
+		  xaxis: {range: [-4, 4], title: "x"},
+		  yaxis: {range: [-20, 20], title: "y"},
+		  title: "Parabola",
+		  uirevision:'false',
+		  // datarevision:'true',
+		};
+
+		var config = {responsive: true, scrollZoom: true}
+
+		var data = [{
+		  x: xArray,
+		  y: yArray,
+		  mode:"lines"
+		}];
+
+
+		Plotly.newPlot("myPlot",
+			data = data ,
+			layout = layout,
+			config = config);
+
+	</script>
+
+
+	<script>
+
+// var newValues = { "newxarray": xArray,
+// 	        		"newyarray": yArray
+// 	        	};
+
+	function myFunction() {
+
+	  var a = document.getElementById("a").valueAsNumber;
+	  var b = document.getElementById("b").valueAsNumber;
+	  var c = document.getElementById("c").valueAsNumber;
+
+	  // document.getElementById("sum").innerHTML = m+b;
+	  for(var i=0; i<xArray.length; i++) {
+	    			yArray[i] = a*xArray[i]**2+b*xArray[i]+c;
+				};
+
+	  data = [{
+		  x: xArray,
+		  y: yArray,
+		}];
+
+		// layout.xaxis.range = [-4, 4];
+		// layout.yaxis.range = [-20, 20];
+
+	  Plotly.update("myPlot", data = data , layout = layout, config = config);
+
+	}
+
+
+// myPlot.on('plotly_relayout',
+// 	    function(eventdata){
+
+// 	    	var xStep = (Number(eventdata['xaxis.range[1]'])
+// 	    		-Number(eventdata['xaxis.range[0]']))/100;
+// 	    	// var yStep = (Number(eventdata['yaxis.range[1]'])
+// 	    	// 	-Number(eventdata['yaxis.range[0]']))/400;
+
+// 	        xArray = [...Array(100).keys()].map(i => Number(eventdata['xaxis.range[0]'])+ i*xStep);
+// 	        // yArray = [...Array(400).keys()].map(i => Number(eventdata['yaxis.range[0]'])+ i*yStep);
+
+// 	    //     newValues = { "newxarray": xArray,
+// 	    //     		"newyarray": yArray
+// 	    //     	}
+
+// 	    	// console.log(xArray);
+// 	    	myFunction();
+// 	    }
+//     );
+
+
+
+	
+</script>
+
+
+
+	<script type="text/javascript">
+
+		function defineRange(myRanges) {
+
+			for (const [key, value] of Object.entries(myRanges)) {
+				document.getElementById(key).min=value[0];
+				document.getElementById(key).max=value[1];
+				document.getElementById(key+"_value").min=value[0];
+				document.getElementById(key+"_value").max=value[1];
+
+				document.getElementById(key).value=(value[0]+value[1])/2;
+				document.getElementById(key+"_value").value=(value[0]+value[1])/2;
+			}
+
+		}
+
+		function updateTextInput(val,element) {
+          document.getElementById(element).value=val;
+          myFunction();
+        }
+
+		function updateSlider(val,element) {
+          document.getElementById(element).value=val;
+          myFunction();
+        }
+
+        var myRanges = {
+        	 "a": [-5,5],
+        	 "b": [-5,5],
+        	 "c": [-5,5],
+	   	}
+
+        defineRange(myRanges)
+	
+	</script>
+
+
+
+
+
+
+
+</body>
+</html> 
